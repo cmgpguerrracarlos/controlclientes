@@ -123,6 +123,25 @@ public class ClienteDao {
             Conexion.close(conn);
         }
         return rows;
+    }
+    
+    public int eliminar(int id){
+        Connection conn = null;
+        PreparedStatement ps = null;
+        int rows = 0;
+        try {
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(SQL_DELETE);
+            ps.setDouble(1, id);
+            
+            rows = ps.executeUpdate();
 
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+        return rows;
     }
 }
