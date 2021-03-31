@@ -57,13 +57,15 @@ public class ClienteDao {
             ps.setInt(1, id);
             rs = ps.executeQuery();
             rs.absolute(1);
-            cliente = new Cliente();
+            if(rs != null){
+                cliente = new Cliente();
             cliente.setIdCliente(rs.getInt("id_cliente"));
             cliente.setNombre(rs.getString("nombre"));
             cliente.setApellido(rs.getString("apellido"));
             cliente.setEmail(rs.getString("email"));
             cliente.setTelefono(rs.getString("telefono"));
             cliente.setSaldo(rs.getDouble("saldo"));
+            }
 
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
