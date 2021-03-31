@@ -84,12 +84,12 @@ public class ClienteDao {
         try {
             conn = Conexion.getConnection();
             ps = conn.prepareStatement(SQL_INSERT);
-            ps.setString(1,cliente.getNombre());
-            ps.setString(2,cliente.getApellido());
-            ps.setString(3,cliente.getEmail());
-            ps.setString(4,cliente.getTelefono());
-            ps.setDouble(5,cliente.getSaldo());
-            
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getApellido());
+            ps.setString(3, cliente.getEmail());
+            ps.setString(4, cliente.getTelefono());
+            ps.setDouble(5, cliente.getSaldo());
+
             rows = ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -99,5 +99,30 @@ public class ClienteDao {
             Conexion.close(conn);
         }
         return rows;
+    }
+
+    public int actualizar(Cliente cliente) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        int rows = 0;
+        try {
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(SQL_UPDATE);
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getApellido());
+            ps.setString(3, cliente.getEmail());
+            ps.setString(4, cliente.getTelefono());
+            ps.setDouble(5, cliente.getSaldo());
+            ps.setDouble(6, cliente.getIdCliente());
+            rows = ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+        return rows;
+
     }
 }
