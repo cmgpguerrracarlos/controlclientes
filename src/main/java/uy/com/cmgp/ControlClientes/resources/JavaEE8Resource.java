@@ -1,4 +1,4 @@
-package uy.com.cmgo.ControlClientes.resources;
+package uy.com.cmgp.ControlClientes.resources;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

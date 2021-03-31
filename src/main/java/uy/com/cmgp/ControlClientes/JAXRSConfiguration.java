@@ -1,4 +1,4 @@
-package uy.com.cmgo.ControlClientes;
+package uy.com.cmgp.ControlClientes;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
