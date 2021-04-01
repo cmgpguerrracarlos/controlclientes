@@ -18,15 +18,14 @@ public class test {
 //        c1.setIdCliente(1);
 //        cd.actualizar(c1);
         
-        Cliente c4 = cd.encontrar(3);
+        Cliente c4 = cd.encontrar(2);
         
         System.out.println(c4);
-//        List<Cliente> clientes = cd.listar();
-//        System.out.println("88888888888888888888888888888888888888");
-//        clientes.forEach(c->{
-//            System.out.println(c.toString());
-//        });
-//        System.out.println("88888888888888888888888888888888888888");
-        
+        List<Cliente> clientes = cd.listar();
+        System.out.println("88888888888888888888888888888888888888");
+        clientes.forEach(c->{
+            System.out.println(c.toString());
+        });
+        System.out.println("88888888888888888888888888888888888888");
     }
 }

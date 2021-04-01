@@ -56,15 +56,14 @@ public class ClienteDao {
             ps = conn.prepareStatement(SQL_SELECT_BY_ID);
             ps.setInt(1, id);
             rs = ps.executeQuery();
-            rs.absolute(1);
-            if(rs != null){
+            while (rs.next()) {
                 cliente = new Cliente();
-            cliente.setIdCliente(rs.getInt("id_cliente"));
-            cliente.setNombre(rs.getString("nombre"));
-            cliente.setApellido(rs.getString("apellido"));
-            cliente.setEmail(rs.getString("email"));
-            cliente.setTelefono(rs.getString("telefono"));
-            cliente.setSaldo(rs.getDouble("saldo"));
+                cliente.setIdCliente(rs.getInt("id_cliente"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setTelefono(rs.getString("telefono"));
+                cliente.setSaldo(rs.getDouble("saldo"));
             }
 
         } catch (SQLException ex) {
@@ -124,8 +123,8 @@ public class ClienteDao {
         }
         return rows;
     }
-    
-    public int eliminar(int id){
+
+    public int eliminar(int id) {
         Connection conn = null;
         PreparedStatement ps = null;
         int rows = 0;
@@ -133,7 +132,7 @@ public class ClienteDao {
             conn = Conexion.getConnection();
             ps = conn.prepareStatement(SQL_DELETE);
             ps.setDouble(1, id);
-            
+
             rows = ps.executeUpdate();
 
         } catch (SQLException ex) {
