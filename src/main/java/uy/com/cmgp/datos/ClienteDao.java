@@ -22,7 +22,7 @@ public class ClienteDao {
         ResultSet rs = null;
         List<Cliente> clientes = new ArrayList<>();
         try {
-            conn = Conexion.getConnection();
+            conn = Conexion.getConnection();            
             ps = conn.prepareStatement(SQL_SELECT);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -39,11 +39,19 @@ public class ClienteDao {
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         } finally {
-            Conexion.close(rs);
-            Conexion.close(ps);
-            Conexion.close(conn);
+            if (rs != null) {
+                Conexion.close(rs);
+            }
+            if(ps != null ){
+                Conexion.close(ps);
+            }
+            
+            if(conn != null){
+               Conexion.close(conn); 
+            }
+            return clientes;
         }
-        return clientes;
+
     }
 
     public Cliente encontrar(int id) {
@@ -69,9 +77,16 @@ public class ClienteDao {
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         } finally {
-            Conexion.close(rs);
-            Conexion.close(ps);
-            Conexion.close(conn);
+            if (rs != null) {
+                Conexion.close(rs);
+            }
+            if(ps != null ){
+                Conexion.close(ps);
+            }
+            
+            if(conn != null){
+               Conexion.close(conn); 
+            }
         }
         return cliente;
     }
@@ -94,8 +109,14 @@ public class ClienteDao {
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         } finally {
-            Conexion.close(ps);
-            Conexion.close(conn);
+            
+            if(ps != null ){
+                Conexion.close(ps);
+            }
+            
+            if(conn != null){
+               Conexion.close(conn); 
+            }
         }
         return rows;
     }
@@ -118,8 +139,14 @@ public class ClienteDao {
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         } finally {
-            Conexion.close(ps);
-            Conexion.close(conn);
+            
+            if(ps != null ){
+                Conexion.close(ps);
+            }
+            
+            if(conn != null){
+               Conexion.close(conn); 
+            }
         }
         return rows;
     }
@@ -138,8 +165,14 @@ public class ClienteDao {
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         } finally {
-            Conexion.close(ps);
-            Conexion.close(conn);
+            
+            if(ps != null ){
+                Conexion.close(ps);
+            }
+            
+            if(conn != null){
+               Conexion.close(conn); 
+            }
         }
         return rows;
     }

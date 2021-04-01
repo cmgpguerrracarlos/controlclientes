@@ -28,4 +28,8 @@ public class test {
         });
         System.out.println("88888888888888888888888888888888888888");
     }
+    
+    public List<Cliente> lista(){
+        return new ClienteDao().listar();
+    }
 }

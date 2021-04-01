@@ -1,7 +1,6 @@
 package web;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,15 +11,14 @@ import uy.com.cmgp.datos.ClienteDao;
 import uy.com.cmgp.dominio.Cliente;
 
 @WebServlet("/ServletController")
-public class ServletController extends HttpServlet{
-    
+public class ServletController extends HttpServlet {
+
     @Override
-    protected void doGet(HttpServletRequest req,HttpServletResponse res) throws ServletException, IOException{
-       List<Cliente> clientes = new ArrayList<>();
-        Cliente c1 = new Cliente("Martin","Rodriguez","cmgmmm@com","343443424",3423.0);
-       clientes.add(c1);
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        ClienteDao cd = new ClienteDao();
+        List<Cliente> clientes = cd.listar();
         req.setAttribute("clientes", clientes);
         req.getRequestDispatcher("clientes.jsp").forward(req, res);
     }
-    
+
 }
