@@ -17,8 +17,19 @@ public class ServletController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         ClienteDao cd = new ClienteDao();
         List<Cliente> clientes = cd.listar();
+        int totalClientes = clientes.size();
+        req.setAttribute("saldoTotal", this.getSaldoTotal(clientes));
+        req.setAttribute("totalClientes", totalClientes);
         req.setAttribute("clientes", clientes);
         req.getRequestDispatcher("clientes.jsp").forward(req, res);
+    }
+    
+    private Double getSaldoTotal(List<Cliente> clientes){
+        Double saldoTotal=0.0;
+        for(Cliente c:clientes){
+            saldoTotal += c.getSaldo();
+        }
+        return saldoTotal;
     }
 
 }

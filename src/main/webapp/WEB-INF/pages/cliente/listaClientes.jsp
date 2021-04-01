@@ -11,7 +11,7 @@
                         <h4>Lista de Clientes</h4>
                     </div>
                     <table class="table table-striped">
-                        <thead class="thead-dark">
+                        <thead class="thead-dark bg-dark text-white">
                             <tr>
                                 <th>#</th>
                                 <th>Nombre</th>
@@ -34,6 +34,24 @@
                             </c:forEach>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center bg-danger text-white mb-3">
+                    <div class="card-body">
+                        <h3>Saldo total</h3>
+                        <h4 class="display-4">
+                            <fmt:formatNumber value="${saldoTotal}" type="currency"/>
+                        </h4>
+                    </div>
+                </div>
+                <div class="card text-center bg-success text-white mb-3">
+                    <div class="card-body">
+                        <h3>Total Clientes</h3>
+                        <h4 class="display-4"> 
+                            <i class="fas fa-users"></i>${totalClientes}
+                        </h4>
+                    </div> 
                 </div>
             </div>
         </div>
