@@ -8,8 +8,48 @@
     </head>
     <body>
         <jsp:include page="/WEB-INF/pages/parts/header.jsp" />
-        
-        <jsp:include page="/WEB-INF/pages/parts/botonesNavEdicion.jsp" />
+
+        <form action="${pageContext.request.contextPath}/ServletController?accion=editar&idCliente=${cliente.idCliente}" method="POST" class="was-validated">
+            <jsp:include page="/WEB-INF/pages/parts/botonesNavEdicion.jsp" />
+
+            <section id="details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Editar Cliente</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" class="form-control" name="nombre" value="${cliente.nombre}" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apellido">Apellido</label>
+                                        <input type="text" class="form-control" name="apellido" value="${cliente.apellido}" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" name="email" value="${cliente.email}"required />
+                                    </div>
+                                    <div class="form-group">   
+                                        <label for="telefono">Telefono</label>
+                                        <input type="tel" class="form-control" name="telefono" value="${cliente.telefono}" required />
+                                    </div>
+                                    <div class="form-group">    
+                                        <label for="saldo">Saldo</label>
+                                        <input type="number" class="form-control" name="saldo" value="${cliente.saldo}" step="any" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </form>
 
         <jsp:include page="/WEB-INF/pages/parts/footer.jsp"/>
 

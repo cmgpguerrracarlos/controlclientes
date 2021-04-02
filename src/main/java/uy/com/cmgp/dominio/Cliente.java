@@ -8,6 +8,15 @@ public class Cliente {
     private String telefono;
     private Double saldo;
 
+    public Cliente(int idCliente, String nombre, String apellido, String email, String telefono, Double saldo) {
+        this.idCliente = idCliente;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.telefono = telefono;
+        this.saldo = saldo;
+    }
+
 
     public Cliente() {
     }

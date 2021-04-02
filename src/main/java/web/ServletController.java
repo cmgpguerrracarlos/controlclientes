@@ -50,6 +50,9 @@ public class ServletController extends HttpServlet {
                 case "insertar":
                     this.insertarCliente(req, res);
                     break;
+                case "editar":
+                    this.editarClienteGuardar(req, res);
+                    break;
                 default:
                     this.accionDefault(req, res);
 
@@ -77,6 +80,27 @@ public class ServletController extends HttpServlet {
         this.accionDefault(req, res);
         
     }
+    
+    private void editarClienteGuardar(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("idCliente"));
+        String nombre = req.getParameter("nombre");
+        String apellido = req.getParameter("apellido");
+        String email = req.getParameter("email");
+        String telefono = req.getParameter("telefono");
+        String saldoString = req.getParameter("saldo");
+        Double saldo = 0.0;
+        if (!saldoString.equals("") && saldoString != null) {
+            saldo = Double.parseDouble(saldoString);
+        }
+
+        ClienteDao cd = new ClienteDao();
+        int rows = cd.actualizar(new Cliente(id,nombre, apellido, email, telefono, saldo));
+        System.out.println(rows);
+        this.accionDefault(req, res);
+        
+    }
+    
+    
     
     private void editarCliente(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
         int idCliente = Integer.parseInt(req.getParameter("idCliente"));
