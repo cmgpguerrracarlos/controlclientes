@@ -16,7 +16,19 @@ public class ServletController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        this.accionDefault(req, res);
+        String accion = req.getParameter("accion");
+        if(accion != null) {
+            switch (accion) {
+                case "editar":
+                    this.editarCliente(req, res);
+                    break;
+                default:
+                    this.accionDefault(req, res);
+
+            }
+        } else {
+            this.accionDefault(req, res);
+        }
     }
 
     private void accionDefault(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -27,7 +39,6 @@ public class ServletController extends HttpServlet {
         session.setAttribute("saldoTotal", this.getSaldoTotal(clientes));
         session.setAttribute("totalClientes", totalClientes);
         session.setAttribute("clientes", clientes);
-//        req.getRequestDispatcher("clientes.jsp").forward(req, res);
         res.sendRedirect("clientes.jsp");
     }
 
@@ -65,6 +76,13 @@ public class ServletController extends HttpServlet {
         System.out.println(rows);
         this.accionDefault(req, res);
         
+    }
+    
+    private void editarCliente(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+        int idCliente = Integer.parseInt(req.getParameter("idCliente"));
+        Cliente cliente = new ClienteDao().encontrar(idCliente);
+        req.setAttribute("cliente", cliente);
+        req.getRequestDispatcher("/WEB-INF/pages/cliente/editarCliente.jsp").forward(req, res);
     }
 
     private Double getSaldoTotal(List<Cliente> clientes) {
