@@ -57,3 +57,5 @@
         </div>
     </div>
 </section>
+
+<jsp:include page="/WEB-INF/pages/cliente/agregarCliente.jsp"/>
