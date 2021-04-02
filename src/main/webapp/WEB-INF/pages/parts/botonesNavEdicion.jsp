@@ -11,6 +11,11 @@
                     <i class="fas fa-check"></i>Guardar Cliente
                 </button>
             </div>
+            <div class="col-3">
+                <a href="${pageContext.request.contextPath}/ServletController?accion=eliminar&idCliente=${cliente.idCliente}" class="btn btn-danger btn-block">
+                    <i class="fas fa-trash" ></i>Eliminar Cliente 
+                </a>
+            </div>
         </div>
     </div>
 </section>

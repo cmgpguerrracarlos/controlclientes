@@ -22,6 +22,9 @@ public class ServletController extends HttpServlet {
                 case "editar":
                     this.editarCliente(req, res);
                     break;
+                case "eliminar":
+                    this.eliminarCliente(req, res);
+                    break;
                 default:
                     this.accionDefault(req, res);
 
@@ -29,6 +32,15 @@ public class ServletController extends HttpServlet {
         } else {
             this.accionDefault(req, res);
         }
+    }
+    
+    private void eliminarCliente(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("idCliente"));
+        ClienteDao cd = new ClienteDao();
+        int rows = cd.eliminar(id);
+        System.out.println(rows);
+        this.accionDefault(req, res);
+        
     }
 
     private void accionDefault(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -42,6 +54,8 @@ public class ServletController extends HttpServlet {
         res.sendRedirect("clientes.jsp");
     }
 
+    
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         String accion = req.getParameter("accion");
