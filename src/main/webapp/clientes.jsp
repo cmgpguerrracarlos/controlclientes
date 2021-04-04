@@ -10,7 +10,7 @@
         <jsp:include page="/WEB-INF/pages/parts/header.jsp" />
         <jsp:include page="/WEB-INF/pages/parts/botonesnavegacion.jsp" />
         <jsp:include page="/WEB-INF/pages/cliente/listaClientes.jsp"/>
-
+        <a href="${pageContext.request.contextPath}/api/clientes" >Clientes api</a>
         <jsp:include page="/WEB-INF/pages/parts/footer.jsp"/>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
