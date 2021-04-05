@@ -20,8 +20,7 @@ public class ConexionMongoDb {
     }
     
     public boolean insertar(String action){
-//        document.put("action", action);
-//        collection.insert(document);
+        
         return true;
     }
     
