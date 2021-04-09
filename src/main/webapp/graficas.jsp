@@ -4,12 +4,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Graficas</title>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="js/Chart.js/dist/chart.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
         <h1>Primera Grafica con Chart.js</h1>
-        <canvas id="myChart" width="400" height="300"></canvas>
+        <canvas id="myChart" width="200" height="150"></canvas>
 <script>
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
